@@ -465,7 +465,7 @@
 	},
 	"servers": [
 		{
-			"url": "/v2"
+			"url": "https://api-partner.houdiniswap.com/v2"
 		}
 	]
 }
