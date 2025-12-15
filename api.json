@@ -1,0 +1,471 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"FieldErrors": {
+				"properties": {},
+				"type": "object",
+				"additionalProperties": {
+					"properties": {
+						"value": {},
+						"message": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"message"
+					],
+					"type": "object"
+				}
+			},
+			"ValidationError": {
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"requestId": {
+						"type": "string"
+					},
+					"fields": {
+						"$ref": "#/components/schemas/FieldErrors"
+					}
+				},
+				"required": [
+					"code",
+					"message",
+					"fields"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ErrorResponse": {
+				"properties": {
+					"code": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"requestId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"code",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Chain": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"created": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"shortName": {
+						"type": "string"
+					},
+					"memoNeeded": {
+						"type": "boolean"
+					},
+					"hashUrl": {
+						"type": "string"
+					},
+					"explorerUrl": {
+						"type": "string"
+					},
+					"addressUrl": {
+						"type": "string"
+					},
+					"priority": {
+						"type": "number",
+						"format": "double"
+					},
+					"kind": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"enabled": {
+						"type": "boolean"
+					},
+					"shortNameV1": {
+						"type": "string"
+					},
+					"customRpc": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"created",
+					"name",
+					"shortName",
+					"memoNeeded",
+					"explorerUrl",
+					"addressUrl",
+					"kind",
+					"chainId",
+					"enabled",
+					"shortNameV1"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TokenMinMax": {
+				"properties": {
+					"anon": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"cex": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"dex": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Token": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"chain": {
+						"type": "string"
+					},
+					"decimals": {
+						"type": "number",
+						"format": "double",
+						"default": 0
+					},
+					"symbol": {
+						"type": "string",
+						"default": ""
+					},
+					"name": {
+						"type": "string",
+						"default": ""
+					},
+					"created": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"chainData": {
+						"$ref": "#/components/schemas/Chain"
+					},
+					"description": {
+						"type": "string"
+					},
+					"keyword": {
+						"type": "string"
+					},
+					"mainnet": {
+						"type": "boolean"
+					},
+					"enabled": {
+						"type": "boolean"
+					},
+					"unverified": {
+						"type": "boolean"
+					},
+					"hasDex": {
+						"type": "boolean"
+					},
+					"hasCex": {
+						"type": "boolean"
+					},
+					"cexTokenId": {
+						"type": "string",
+						"default": ""
+					},
+					"rank": {
+						"type": "number",
+						"format": "double"
+					},
+					"cgId": {
+						"type": "string"
+					},
+					"marketCapChange24h": {
+						"type": "number",
+						"format": "double"
+					},
+					"circulatingSupply": {
+						"type": "number",
+						"format": "double"
+					},
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"marketCap": {
+						"type": "number",
+						"format": "double"
+					},
+					"volume": {
+						"type": "number",
+						"format": "double"
+					},
+					"fdv": {
+						"type": "number",
+						"format": "double"
+					},
+					"change": {
+						"type": "number",
+						"format": "double"
+					},
+					"priority": {
+						"type": "number",
+						"format": "double"
+					},
+					"cgUpdated": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"warningMessage": {
+						"type": "string"
+					},
+					"minMax": {
+						"$ref": "#/components/schemas/TokenMinMax"
+					}
+				},
+				"required": [
+					"id",
+					"address",
+					"chain",
+					"created",
+					"chainData",
+					"description",
+					"keyword",
+					"cgUpdated"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TokenSearchResult": {
+				"properties": {
+					"tokens": {
+						"items": {
+							"$ref": "#/components/schemas/Token"
+						},
+						"type": "array"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalPages": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"tokens",
+					"total",
+					"totalPages"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"apiKey": {
+				"type": "apiKey",
+				"name": "Authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "houdiniswap-backend",
+		"version": "1.46.0",
+		"description": "Houdiniswap Backend",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"paths": {
+		"/tokens": {
+			"get": {
+				"operationId": "GetTokens",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TokenSearchResult"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidationError"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Search tokens",
+				"tags": [
+					"Tokens"
+				],
+				"security": [
+					{
+						"apiKey": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Number of results to return per page",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 20,
+							"format": "double",
+							"type": "number",
+							"maximum": 100,
+							"minimum": 1
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number",
+							"minimum": 1
+						}
+					},
+					{
+						"description": "Search term that matches against name, symbol, address, keyword, cexTokenId fields",
+						"in": "query",
+						"name": "term",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter by chain. Matches against token.chainData.shortName, e.g. \"ethereum\"",
+						"in": "query",
+						"name": "chain",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter native/non-native tokens",
+						"in": "query",
+						"name": "mainnet",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"description": "Filter tokens that support/don't support CEX swaps",
+						"in": "query",
+						"name": "hasCex",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"description": "Filter tokens that support/don't support DEX swaps",
+						"in": "query",
+						"name": "hasDex",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"description": "Filter tokens by contract address",
+						"in": "query",
+						"name": "address",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter tokens by symbol, matches against token.symbol field",
+						"in": "query",
+						"name": "symbol",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/v2"
+		}
+	]
+}
